@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>button</title>
+    <script src="https://unpkg.com/rxjs@7/dist/bundles/rxjs.umd.min.js"></script>
+</head>
+
+<body>
+    <!-- 
+            **** using js ****  
+    <button id="d1">count<span id="cnt"></span></button>
+    <script>
+        var count = 0
+        let incFlag = true
+        let timer;
+        document.getElementById('cnt').textContent = count
+
+        document.getElementById('d1').addEventListener('click', () => {
+            if (incFlag) {
+                count++
+                document.getElementById('cnt').textContent = count
+                inc();
+            }
+        })
+
+        function inc() {
+            incFlag = false
+            timer = setInterval(() => {
+                incFlag = true
+                clearInterval(timer)
+            }, 1000)
+        }
+    </script> -->
+    <button id="btn">count:0</button>
+    <script>
+        let c = 0
+        rxjs.fromEvent(document.getElementById('btn'), 'click')
+            .pipe(
+                rxjs.throttleTime(1000),
+                rxjs.map(ev => ev)
+            ).subscribe((ev) => {
+                ev.target.innerText = 'count:' + ++c
+            })
+    </script>
+
+</body>
+
+</html>

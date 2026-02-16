@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        /* Page base */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            padding: 2rem;
+        }
+
+        /* Form container */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 22rem;
+            background: #ffffff;
+            padding: 1.25rem;
+            border-radius: 0.625rem;
+            box-shadow: 0 0.375rem 1.125rem rgba(0, 0, 0, 0.1);
+        }
+
+        /* Each row */
+        .form-row {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+
+        /* Labels */
+        label {
+            width: 5rem;
+            font-size: 0.875rem;
+            color: #333;
+        }
+
+        /* Inputs */
+        input {
+            flex: 1;
+            height: 1.5rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            border: 1px solid #ccc;
+            font-size: 0.875rem;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 0 0 0.125rem rgba(74, 144, 226, 0.2);
+        }
+
+        /* Save button */
+        button[type="submit"] {
+            align-self: center;
+            width: 8.75rem;
+            height: 2.25rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 0.5rem;
+            background: #4a90e2;
+            color: #ffffff;
+            font-size: 0.875rem;
+            font-weight: bold;
+        }
+
+        /* Contacts list */
+        .contacts-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9375rem;
+            margin-top: 1.875rem;
+        }
+
+        /* Contact card */
+        .contact-card {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1rem;
+            width: 18rem;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            /* let children stretch */
+            gap: 0.5rem;
+        }
+
+        /* Cancel button aligned top-right */
+        .cancel-btn {
+            align-self: flex-end;
+            border: none;
+            background: none;
+            border-radius: 40%;
+            width: 2rem;
+            height: 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Cancel button image */
+        .cancel-btn img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Contact image centered */
+        .contact-card #profile-img {
+            width: 4.5rem;
+            height: 4.5rem;
+            border-radius: 50%;
+            object-fit: cover;
+            align-self: center;
+        }
+
+        /* Text aligned left */
+        .contact-card p {
+            font-size: 0.85rem;
+            color: #444;
+            margin: 0;
+        }
+
+        /* Edit button bottom-right */
+        .contact-card #edit-button {
+            align-self: flex-end;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            background: #6c757d;
+            border: none;
+            border-radius: 0.4rem;
+        }
+
+        .contact-card #edit-button:hover {
+            background: #5a6268;
+        }
+
+        #sort-icon {
+            height: 2.2em;
+            width: 2.2em;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .features {
+            margin-top: 1em;
+            height: 2.3em;
+            display: flex;
+            flex-direction: row;
+            width: 40em;
+            gap: 1em;
+            align-items: center;
+        }
+
+        .features input {
+            width: 15em;
+            flex: 0 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="contactForm">
+        <div class="form-row">
+            <label for="name">Name:</label>
+            <input id="name" type="text" name="name" required>
+        </div>
+
+        <div class="form-row">
+            <label for="number">Number:</label>
+            <input id="number" type="tel" name="number" required>
+        </div>
+
+        <div class="form-row">
+            <label for="email">Email:</label>
+            <input id="email" type="email" name="email" required>
+        </div>
+
+        <div class="form-row">
+            <label for="image">Image:</label>
+            <input id="image" type="file" name="image" accept="image/*">
+        </div>
+
+        <button type="submit">Save Contact</button>
+    </form>
+    <div class="features">
+        <img id="sort-icon"
+            src="https://imgs.search.brave.com/PqZDABSdfFuhsiuzON9Y3gV51kJTMb9Z9wpVhUWNBws/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA1LzYyLzIyLzE5/LzM2MF9GXzU2MjIy/MTk0NF9XcXhoYkdV/SnBHRzJDQ0VNc1E3/bXI5b2VJOEFDbFd4/MC5qcGc"
+            alt="">
+        <input type="text" placeholder="search contact" id="search-contact">
+    </div>
+    <div class="contacts-container" id="contactsContainer"></div>
+
+    <script>
+        const contactForm = document.getElementById("contactForm");
+        const contactsContainer = document.getElementById("contactsContainer");
+        const searchContact = document.getElementById("search-contact")
+        const sort = document.getElementById('sort-icon')
+
+        let contacts = [];
+        let editIndex = null;
+
+        contactForm.addEventListener("submit", handleFormSubmit);
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const formData = new FormData(contactForm);
+            const imageFile = formData.get("image");
+
+            const contactData = {
+                name: formData.get("name"),
+                number: formData.get("number"),
+                email: formData.get("email"),
+                image: null
+            };
+
+            if (imageFile && imageFile.size > 0) {
+                contactData.image = URL.createObjectURL(imageFile);
+            }
+
+            if (editIndex === null) {
+                contacts.push(contactData);
+            } else {
+                contacts[editIndex] = {
+                    ...contacts[editIndex],
+                    ...contactData,
+                    image: contactData.image || contacts[editIndex].image
+                };
+                editIndex = null;
+            }
+
+            contactForm.reset();
+            renderContacts(contacts);
+        }
+
+        //search logic
+        searchContact.addEventListener('keyup', (event) => {
+            const query = event.target.value.toLowerCase();
+
+            const contactSearchResult = query === "" ? contacts : contacts.filter(contact =>
+                contact.name.toLowerCase().includes(query)
+            );
+            if (event.key === "Enter") {
+                event.target.value = ''
+            }
+            renderContacts(contactSearchResult);
+        });
+
+
+        // sort  logic
+        sort.addEventListener("click", () => {
+            contacts.sort((a, b) =>
+                a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+            );
+            renderContacts(contacts);
+        })
+
+
+        function renderContacts(contacts) {
+            contactsContainer.innerHTML = "";
+
+            contacts.forEach((contact, index) => {
+                const card = document.createElement("div");
+                card.className = "contact-card";
+
+                card.innerHTML = `
+                    <button class="cancel-btn"><img src="cancel.jpeg" alt="Button icon"></button>
+                    <img  src="${contact.image || 'https://via.placeholder.com/70'}" id="profile-img" alt="Contact Image">
+                    <p><b>Name:</b> ${contact.name}</p>
+                    <p><b>Email:</b> ${contact.email}</p>
+                    <p><b>Phone:</b> ${contact.number}</p>
+                    <button id='edit-button' data-index="${index}">Edit</button>`;
+
+                card.querySelector('.cancel-btn').addEventListener("click", () => {
+                    deleteContact(index);
+                })
+                card.querySelector("#edit-button").addEventListener("click", () => {
+                    editContact(index);
+                });
+
+
+                contactsContainer.appendChild(card);
+            });
+        }
+
+        function deleteContact(index) {
+            contacts.splice(index, 1)
+            renderContacts(contacts);
+        }
+
+        function editContact(index) {
+            const contact = contacts[index];
+            editIndex = index;
+
+            contactForm.elements.name.value = contact.name;
+            contactForm.elements.number.value = contact.number;
+            contactForm.elements.email.value = contact.email;
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            width: 300px;
+            height: 300px;
+            background-color: aquamarine;
+        }
+
+        button {
+            margin-top: 10px;
+            width: 70px;
+            height: 25px;
+            font-size: medium;
+        }
+
+        .toggled {
+            background-color: rgb(251, 248, 247);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="active"></div>
+    <button id="toggle_btn" onclick="toggle_fun()">toggle</button>
+    <script>
+        function toggle_fun() {
+            let container = document.querySelector('.active')
+            container.classList.toggle('toggled');
+        }
+    </script>
+</body>
+
+</html>

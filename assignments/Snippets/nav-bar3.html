@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            margin: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #navbar {
+            display: flex;
+            background-color: rgb(16, 17, 17);
+
+        }
+
+        #navbar img {
+            width: 150px;
+        }
+
+        ul {
+            padding: 0px;
+            margin: 0px;
+            position: sticky;
+            top: 0px;
+            flex-grow: 1;
+            text-align: right;
+        }
+
+        li {
+            display: inline-block;
+            padding: 10px 30px;
+            color: white
+        }
+
+        li img {
+            width: 200px;
+            display: inline-block;
+            margin-bottom: -10px;
+        }
+
+        #d1 {
+            vertical-align: middle;
+        }
+
+        .bi-list {
+            display: none;
+        }
+
+        #checkbox-menu {
+            display: none;
+        }
+
+        @media screen and (max-width:800px) {
+            #navbar {
+                justify-content: space-between;
+            }
+
+            #menu-items {
+                display: none;
+            }
+
+            .bi-list {
+                display: block;
+                font-size: 2em;
+                padding: 10px;
+                color: white;
+            }
+
+            #checkbox-menu:checked~#menu-items {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 58px;
+                background-color: tomato;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                transition-duration: 5s;
+            }
+
+            #checkbox-menu:checked~#menu-items li {
+                border-bottom: 2px solid white;
+                padding: 15px 0px;
+                width: 100%;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar">
+        <img src="https://edupoly.in/assets/fullstack-training-hyderabad.png" alt="">
+        <input type="checkbox" name="checkbox" id="checkbox-menu">
+        <label for="checkbox-menu"> <i class="bi bi-list"></i></label>
+        <ul id="menu-items">
+            <li>Home</li>
+            <li>Aboutus</li>
+            <li>Contactus</li>
+            <li>Service</li>
+            <li>Login</li>
+        </ul>
+    </div>
+    <h1>Hello Divya</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+    <h1>Hello Karthik</h1>
+</body>
+
+</html>

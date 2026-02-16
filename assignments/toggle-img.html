@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="" alt="">
+    <button id="btn" onclick="img_toggle()">on</button>
+    <script>
+        let off = 'https://imgs.search.brave.com/5k35pYkYFhLyr2CbLmUsx_rv1Ak_EftiLVxN1DQL-oE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/Y2l0eXBuZy5jb20v/cHVibGljL3VwbG9h/ZHMvcHJldmlldy9o/ZC1saWdodC1idWxi/LW9uLW9mZi1wbmct/NzA0MDgxNjk1MTI2/Mjc0amE0dmF6cnVq/aS5wbmc'
+        let on = 'https://imgs.search.brave.com/PAzCh3fVZV133n3k_WRlRqq0dZAjT0d6uV2PmIaOUKU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNDkv/OTUwLzYzMC9zbWFs/bC9hLWxpZ2h0LWJ1/bGItaXMtc2hvd24t/b24tYS1ibGFjay1i/YWNrZ3JvdW5kLXBu/Zy5wbmc'
+        let image = document.querySelector('img')
+        image.src = on;
+        function img_toggle() {
+            let btn = document.querySelector('button')
+            if (image.src == on) {
+                btn.innerText = 'off'
+                image.src = off
+            }
+            else {
+                btn.innerText = 'on'
+                image.src = on
+            }
+        }
+    </script>
+</body>
+
+</html>

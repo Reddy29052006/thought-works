@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hero section</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: #212529;
+            color: #dee2e6;
+            box-shadow: 2px 6px 10px rgb(18, 17, 17);
+        }
+
+        #hero-section {
+            width: 42rem;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            margin: 0px auto;
+            justify-self: center;
+            height: 70vh;
+            align-items: center;
+            padding: 3rem 0rem;
+            margin: 3rem 0rem;
+        }
+
+        #hero-section img {
+            width: 72px;
+        }
+
+        #hero-section p {
+            font-weight: 300;
+            line-height: 1.8rem;
+            font-size: 1.3rem;
+            margin: 0.7rem 0rem;
+        }
+
+        #hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 0rem;
+            margin-top: 1rem;
+        }
+
+        #hero-section .btns {
+            margin: 1rem 1rem;
+
+        }
+
+        #hero-section .btns button {
+            padding: 0.7rem 1rem;
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin: 2px 2px;
+            border-radius: 0.7rem;
+            border: 0px solid #0d6efd;
+            color: #dee2e6;
+            background-color: #0d6efd;
+            cursor: pointer;
+        }
+
+        #hero-section .btns button:first-child:hover {
+            background-color: #0b5ed7;
+            transition: transform 0.5s ease;
+        }
+
+        #hero-section .btns button:last-child {
+            color: #6c757d;
+            border: 1px solid #6C756C;
+            background-color: #212529;
+        }
+
+        #hero-section .btns button:last-child:hover {
+            background-color: #6c757d;
+            border: 1px solid #6c757d;
+            color: #fff;
+            transition: transform 0.5s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="hero-section">
+        <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="">
+        <h1>Centered hero</h1>
+        <p>Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end
+            open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt
+            components, and powerful JavaScript plugins</p>
+        <div class="btns">
+            <button>Primary button</button>
+            <button>Secondary </button>
+        </div>
+    </div>
+</body>
+
+</html>

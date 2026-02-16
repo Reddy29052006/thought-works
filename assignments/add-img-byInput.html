@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Viewer</title>
+    <style>
+        #imageContainer img {
+            margin: 10px;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="imageUrlInput" placeholder="Enter image URL">
+    <button onclick="addImage()">Add Image</button>
+    <div id="imageContainer"></div>
+
+    <script>
+        function addImage() {
+            let imageUrl = document.getElementById('imageUrlInput').value.trim();
+            if (!imageUrl)
+                return console.log('Please enter an image URL.');
+
+            let img = document.createElement('img');
+            img.src = imageUrl;
+
+            img.onerror = () => console.log('Failed to load image. Check the URL.');
+
+            document.getElementById('imageContainer').appendChild(img);
+            document.getElementById('imageUrlInput').value = '';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technologies Job Opportunities</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #0d0f1a;
+            --card: #141726;
+            --border: #1e2340;
+            --accent-web: #38bdf8;
+            --accent-py: #facc15;
+            --accent-java: #f97316;
+            --accent-react: #61dafb;
+            --text: #e2e8f0;
+            --muted: #8892aa;
+            --tag-bg: #1e2340;
+            --salary: #4ade80;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ── HEADER ─────────────────────────────────────── */
+        header {
+            text-align: center;
+            padding: 3.5rem 1.5rem 2.5rem;
+            background: linear-gradient(180deg, #111420 0%, transparent 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #38bdf8, #818cf8, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            margin-top: 0.6rem;
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        /* ── MAIN LAYOUT ─────────────────────────────────── */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.5rem 1.25rem 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        /* ── TECH SECTION ────────────────────────────────── */
+        .tech-section {
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            background: var(--card);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.4rem 1.8rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-header .icon {
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+
+        .section-header h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .section-body {
+            padding: 1.6rem 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+        }
+
+        .section-desc {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ── RESOURCES ───────────────────────────────────── */
+        .resources h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .resource-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: var(--tag-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.35rem 0.85rem;
+            font-size: 0.875rem;
+            color: var(--text);
+            text-decoration: none;
+            display: inline-block;
+            transition: border-color 0.2s, color 0.2s, transform 0.15s;
+            cursor: pointer;
+        }
+
+        .tag:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ── JOBS GRID ───────────────────────────────────── */
+        .jobs h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--muted);
+            margin-bottom: 0.85rem;
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .job-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            transition: border-color 0.2s;
+        }
+
+        .job-card:hover {
+            border-color: #2e3558;
+        }
+
+        .job-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .job-desc {
+            font-size: 0.8rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .job-salary {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--salary);
+            margin-top: 0.2rem;
+        }
+
+        /* ── COLOR ACCENTS ───────────────────────────────── */
+        .web .section-header {
+            border-left: 4px solid var(--accent-web);
+        }
+
+        .py .section-header {
+            border-left: 4px solid var(--accent-py);
+        }
+
+        .java .section-header {
+            border-left: 4px solid var(--accent-java);
+        }
+
+        .react .section-header {
+            border-left: 4px solid var(--accent-react);
+        }
+
+        .web .section-header h2 {
+            color: var(--accent-web);
+        }
+
+        .py .section-header h2 {
+            color: var(--accent-py);
+        }
+
+        .java .section-header h2 {
+            color: var(--accent-java);
+        }
+
+        .react .section-header h2 {
+            color: var(--accent-react);
+        }
+
+        .web .tag:hover {
+            border-color: var(--accent-web);
+            color: var(--accent-web);
+        }
+
+        .py .tag:hover {
+            border-color: var(--accent-py);
+            color: var(--accent-py);
+        }
+
+        .java .tag:hover {
+            border-color: var(--accent-java);
+            color: var(--accent-java);
+        }
+
+        .react .tag:hover {
+            border-color: var(--accent-react);
+            color: var(--accent-react);
+        }
+
+        /* ── FOOTER ──────────────────────────────────────── */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        /* ── RESPONSIVE ──────────────────────────────────── */
+        @media (max-width: 600px) {
+            .section-header {
+                padding: 1.1rem 1.2rem;
+            }
+
+            .section-body {
+                padding: 1.2rem;
+            }
+
+            .jobs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Technologies Job Opportunities</h1>
+        <p>Explore top tech skills, learning resources, and career paths</p>
+    </header>
+
+    <main>
+
+        <!-- ── WEB DEVELOPMENT ── -->
+        <section class="tech-section web">
+            <div class="section-header">
+                <span class="icon">🌐</span>
+                <h2>Web Development</h2>
+            </div>
+            <div class="section-body">
+                <p class="section-desc">Web development helps students create simple websites and apps, gives good job
+                    and freelance chances, and lets them build useful projects that people can use in real life.</p>
+
+                <div class="resources">
+                    <h3>Famous Websites to Learn</h3>
+                    <div class="resource-tags">
+                        <a class="tag" href="https://www.w3schools.com" target="_blank" rel="noopener">W3Schools</a>
+                        <a class="tag" href="https://developer.mozilla.org" target="_blank" rel="noopener">MDN Docs</a>
+                        <a class="tag" href="https://www.freecodecamp.org" target="_blank"
+                            rel="noopener">freeCodeCamp</a>
+                    </div>
+                </div>
+
+                <div class="jobs">
+                    <h3>Job Opportunities</h3>
+                    <div class="jobs-grid">
+                        <div class="job-card">
+                            <div class="job-title">Front-End Developer</div>
+                            <div class="job-desc">Works with HTML, CSS, JavaScript, React</div>
+                            <div class="job-salary">💰 ₹3 – 8 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Back-End Developer</div>
+                            <div class="job-desc">Works with server, database, APIs</div>
+                            <div class="job-salary">💰 ₹4 – 10 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Full-Stack Developer</div>
+                            <div class="job-desc">Handles both front-end & back-end</div>
+                            <div class="job-salary">💰 ₹6 – 15 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Web Designer / UI Designer</div>
+                            <div class="job-desc">Focus on layout, colors, user experience</div>
+                            <div class="job-salary">💰 ₹2.5 – 6 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">UI/UX Designer</div>
+                            <div class="job-desc">Improves user interaction and usability</div>
+                            <div class="job-salary">💰 ₹4 – 9 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Freelancer / Remote Developer</div>
+                            <div class="job-desc">Work from home, project-based</div>
+                            <div class="job-salary">💰 ₹30,000 – ₹2,00,000+/month</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Internships (Students/Freshers)</div>
+                            <div class="job-desc">Learn while earning</div>
+                            <div class="job-salary">💰 ₹8,000 – ₹25,000/month</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── PYTHON ── -->
+        <section class="tech-section py">
+            <div class="section-header">
+                <span class="icon">🐍</span>
+                <h2>Python</h2>
+            </div>
+            <div class="section-body">
+                <p class="section-desc">Python is a powerful and easy language that helps students build apps, automate
+                    tasks, analyze data, and start a tech career faster with less effort.</p>
+
+                <div class="resources">
+                    <h3>Famous Websites to Learn</h3>
+                    <div class="resource-tags">
+                        <a class="tag" href="https://www.python.org" target="_blank" rel="noopener">Python.org</a>
+                        <a class="tag" href="https://www.w3schools.com/python" target="_blank"
+                            rel="noopener">W3Schools</a>
+                        <a class="tag" href="https://www.freecodecamp.org" target="_blank"
+                            rel="noopener">freeCodeCamp</a>
+                    </div>
+                </div>
+
+                <div class="jobs">
+                    <h3>Job Opportunities</h3>
+                    <div class="jobs-grid">
+                        <div class="job-card">
+                            <div class="job-title">Python Developer</div>
+                            <div class="job-desc">Builds applications, automation tools, and software</div>
+                            <div class="job-salary">💰 ₹4 – 10 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Data Analyst</div>
+                            <div class="job-desc">Works with data, reports, and visualizations</div>
+                            <div class="job-salary">💰 ₹4 – 8 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Data Scientist</div>
+                            <div class="job-desc">Uses Python for data analysis and machine learning</div>
+                            <div class="job-salary">💰 ₹6 – 15 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Machine Learning Engineer</div>
+                            <div class="job-desc">Builds smart systems and AI models</div>
+                            <div class="job-salary">💰 ₹7 – 18 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Automation Engineer</div>
+                            <div class="job-desc">Automates tasks and testing using Python</div>
+                            <div class="job-salary">💰 ₹4 – 9 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Web Developer (Python)</div>
+                            <div class="job-desc">Builds websites using Django or Flask</div>
+                            <div class="job-salary">💰 ₹4 – 10 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Freelancer / Remote Developer</div>
+                            <div class="job-desc">Project-based work from home</div>
+                            <div class="job-salary">💰 ₹30,000 – ₹2,00,000+/month</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Internships (Students/Freshers)</div>
+                            <div class="job-desc">Learn Python with real projects</div>
+                            <div class="job-salary">💰 ₹8,000 – ₹30,000/month</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── JAVA ── -->
+        <section class="tech-section java">
+            <div class="section-header">
+                <span class="icon">☕</span>
+                <h2>Java</h2>
+            </div>
+            <div class="section-body">
+                <p class="section-desc">Java is a powerful and popular programming language used to build secure
+                    applications, Android apps, and large software systems, making it a great choice for students and
+                    future careers.</p>
+
+                <div class="resources">
+                    <h3>Famous Websites to Learn</h3>
+                    <div class="resource-tags">
+                        <a class="tag" href="https://docs.oracle.com/javase/tutorial/" target="_blank"
+                            rel="noopener">Oracle</a>
+                        <a class="tag" href="https://www.w3schools.com/java" target="_blank"
+                            rel="noopener">W3Schools</a>
+                        <a class="tag" href="https://www.geeksforgeeks.org/java/" target="_blank"
+                            rel="noopener">GeeksforGeeks</a>
+                    </div>
+                </div>
+
+                <div class="jobs">
+                    <h3>Job Opportunities</h3>
+                    <div class="jobs-grid">
+                        <div class="job-card">
+                            <div class="job-title">Java Developer</div>
+                            <div class="job-desc">Builds software, web apps, and enterprise applications</div>
+                            <div class="job-salary">💰 ₹4 – 10 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Backend Developer (Java)</div>
+                            <div class="job-desc">Works with server-side logic, APIs, databases</div>
+                            <div class="job-salary">💰 ₹5 – 12 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Android App Developer</div>
+                            <div class="job-desc">Builds Android apps using Java</div>
+                            <div class="job-salary">💰 ₹4 – 10 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Full-Stack Developer (Java)</div>
+                            <div class="job-desc">Uses Java with front-end technologies</div>
+                            <div class="job-salary">💰 ₹6 – 15 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Software Engineer</div>
+                            <div class="job-desc">Develops and maintains large software systems</div>
+                            <div class="job-salary">💰 ₹5 – 14 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Enterprise Application Developer</div>
+                            <div class="job-desc">Works on banking and large-scale systems</div>
+                            <div class="job-salary">💰 ₹6 – 18 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Freelancer / Remote Developer</div>
+                            <div class="job-desc">Project-based work from home</div>
+                            <div class="job-salary">💰 ₹30,000 – ₹2,00,000+/month</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Internships (Students/Freshers)</div>
+                            <div class="job-desc">Learn Java with real projects</div>
+                            <div class="job-salary">💰 ₹8,000 – ₹30,000/month</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── REACT JS ── -->
+        <section class="tech-section react">
+            <div class="section-header">
+                <span class="icon">⚛️</span>
+                <h2>React JS</h2>
+            </div>
+            <div class="section-body">
+                <p class="section-desc">React JS is a popular JavaScript library used to build fast, interactive, and
+                    user-friendly websites and applications, making it a top skill for modern web developers.</p>
+
+                <div class="resources">
+                    <h3>Famous Websites to Learn</h3>
+                    <div class="resource-tags">
+                        <a class="tag" href="https://react.dev" target="_blank" rel="noopener">React Official Docs</a>
+                        <a class="tag" href="https://www.freecodecamp.org" target="_blank"
+                            rel="noopener">freeCodeCamp</a>
+                        <a class="tag" href="https://www.w3schools.com/react" target="_blank"
+                            rel="noopener">W3Schools</a>
+                    </div>
+                </div>
+
+                <div class="jobs">
+                    <h3>Job Opportunities</h3>
+                    <div class="jobs-grid">
+                        <div class="job-card">
+                            <div class="job-title">React JS Developer</div>
+                            <div class="job-desc">Builds fast and interactive user interfaces</div>
+                            <div class="job-salary">💰 ₹4 – 10 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Front-End Developer</div>
+                            <div class="job-desc">Works on UI using React, HTML, CSS, JavaScript</div>
+                            <div class="job-salary">💰 ₹3 – 8 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">UI Developer</div>
+                            <div class="job-desc">Converts designs into responsive React components</div>
+                            <div class="job-salary">💰 ₹4 – 9 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Full-Stack Developer (React)</div>
+                            <div class="job-desc">Uses React with Node.js / backend tech</div>
+                            <div class="job-salary">💰 ₹6 – 15 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Web Application Developer</div>
+                            <div class="job-desc">Builds modern web apps and dashboards</div>
+                            <div class="job-salary">💰 ₹5 – 12 LPA</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Freelancer / Remote Developer</div>
+                            <div class="job-desc">Project-based work from home</div>
+                            <div class="job-salary">💰 ₹30,000 – ₹2,00,000+/month</div>
+                        </div>
+                        <div class="job-card">
+                            <div class="job-title">Internships (Students/Freshers)</div>
+                            <div class="job-desc">Learn React with real projects</div>
+                            <div class="job-salary">💰 ₹8,000 – ₹30,000/month</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Student Learning Portal &nbsp;|&nbsp; Designed by Me</p>
+    </footer>
+
+</body>
+
+</html>

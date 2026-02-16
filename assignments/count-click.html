@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            font-size: 25px;
+            align-items: center;
+            padding-left: 20px;
+            margin: 4px;
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+
+        div {
+            display: flex;
+            align-items: baseline;
+        }
+
+        div h4 {
+            padding-left: 20px;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button onclick="like_fun()">like</button>
+        <h4 id="likes"></h4>
+    </div>
+    <div>
+        <button onclick="dislike_fun()">dislike</button>
+        <h4 id="dislikes"></h4>
+    </div>
+    <script>
+        let likes = 0
+        let dislikes = 0
+        function like_fun() {
+            likes++
+            document.getElementById('likes').innerText = likes
+        }
+        function dislike_fun() {
+            dislikes++
+            document.getElementById('dislikes').innerText = dislikes
+        }
+    </script>
+</body>
+
+</html>

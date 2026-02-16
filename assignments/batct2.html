@@ -1,0 +1,69 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="ntd" oninput="handleInput(event)">
+    <button onclick="addTodo()" id="btn1">Add Todo</button>
+    <ul id="d1"></ul>
+    <script>
+        document.getElementById("btn1").disabled = true
+        var todos = ["goto goa", 'pay bills', 'school fee', 'enter step']
+
+        function addTodo() {
+            var newTodo = document.getElementById('ntd').value;
+            todos.push(newTodo)
+            genUI();
+            document.getElementById("ntd").value = ""
+            document.getElementById("btn1").disabled = true
+        }
+        function delTodo(index) {
+            todos.splice(index, 1)
+            console.log(todos);
+            genUI();
+        }
+        function genUI() {
+            document.getElementById("d1").innerHTML = ""
+            // for (let i = 0; i <= todos.length - 1; i++) {
+            //     var ntd = document.createElement("li")
+            //     ntd.innerText = todos[i]
+            //     var dbtn = document.createElement("button")
+            //     dbtn.innerText = "delete"
+            //     dbtn.addEventListener("click", function () { delTodo(i) })
+            //     ntd.appendChild(dbtn)
+
+            //     document.getElementById("d1").appendChild(ntd)
+            // }
+            todos.forEach(function (t, i) {
+                var ntd = document.createElement("li")
+                ntd.innerText = t
+                var dbtn = document.createElement("button")
+                dbtn.innerText = "delete"
+                dbtn.addEventListener("click", function () { delTodo(i) })
+                ntd.appendChild(dbtn)
+                document.getElementById("d1").appendChild(ntd)
+            })
+        }
+        function handleInput(ev) {
+            document.getElementById("btn1").disabled = ev.target.value.trim() === "";
+
+            if (ev.key === "Enter" && ev.target.value.trim() !== "") {
+                addTodo();
+            }
+        }
+        genUI()
+
+    </script>
+</body>
+
+
+</html>
+<!-- 
+    1. state
+    2. action
+--> -->

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            display: inline;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="toggle()">toggle</button>
+    <h1>True</h1>
+    <script>
+        function toggle() {
+            let txt = document.querySelector('h1')
+            txt.innerText = txt.innerText === "True" ? "False" : "True";
+        }
+    </script>
+</body>
+
+</html>

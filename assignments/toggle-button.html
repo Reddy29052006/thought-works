@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Toggle Button</title>
+</head>
+
+<body>
+
+    <button id="btn" onclick="toggle()">white</button>
+
+    <script>
+        function toggle() {
+            let btn = document.getElementById("btn");
+            let isWhite = btn.innerText === "white";
+            btn.style.backgroundColor = isWhite ? "green" : "white";
+            btn.innerText = isWhite ? "green" : "white";
+        }
+    </script>
+
+</body>
+
+</html>

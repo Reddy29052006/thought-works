@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chairs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 10px 0;
+        }
+
+        #chairs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .chair {
+            width: 20vw;
+            max-width: 150px;
+            height: 25vw;
+            max-height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("https://imgs.search.brave.com/XwZPQIFhSQCjkoLaYAMekAfLW4_j3OhyayFlCfdezKk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZWxs/YmVsbC5pbi9jZG4v/c2hvcC9maWxlcy9J/TUdfMjcucG5nP3Y9/MTcxNTQxNDkxMyZ3/aWR0aD0xMTAw");
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .chair.occupied {
+            opacity: 0.25;
+        }
+
+        .chair:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Occupied: <span id="Occupied">0</span></h1>
+    <h1>Available: <span id="Available">6</span></h1>
+
+    <div id="chairs"></div>
+
+    <script>
+        let Occupied = 0;
+        let Available = 6;
+
+        const occupiedUi = document.getElementById('Occupied');
+        const availableUi = document.getElementById('Available');
+        const chairsContainer = document.getElementById('chairs');
+
+        const totalChairs = 6;
+
+        for (let i = 0; i < totalChairs; i++) {
+            const chair = document.createElement('button');
+            chair.classList.add('chair');
+            chair.dataset.state = 'available';
+            chair.setAttribute('aria-pressed', 'false');
+
+            chair.addEventListener('click', () => {
+                if (chair.dataset.state === 'available') {
+                    chair.dataset.state = 'occupied';
+                    chair.classList.add('occupied');
+
+                    Occupied++;
+                    Available--;
+                }
+                else {
+                    chair.dataset.state = 'available';
+                    chair.classList.remove('occupied');
+
+                    Occupied--;
+                    Available++;
+                }
+
+                occupiedUi.textContent = Occupied;
+                availableUi.textContent = Available;
+            });
+
+            chairsContainer.appendChild(chair);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task</title>
+
+    <style>
+        .show-task {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            height: 28px;
+        }
+
+        input {
+            border: 1px solid rgb(134, 124, 124);
+            height: 26px;
+            margin-right: 5px;
+        }
+
+        .show-task p {
+            margin-right: 10px;
+            min-width: 150px;
+        }
+
+        .done {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .task-delete:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="task-bar">
+        <input type="text" id="task-input" placeholder="Enter task">
+        <button id="task-submit">Add Task</button>
+    </div>
+
+    <div id="show-tasks"></div>
+
+    <script>
+        const taskBtn = document.getElementById('task-submit');
+        const taskInput = document.getElementById('task-input');
+        const taskContainer = document.getElementById('show-tasks');
+
+        taskBtn.addEventListener('click', addTask);
+
+        function addTask() {
+            const task = taskInput.value.trim();
+            if (task === '')
+                return;
+
+            const displayTask = document.createElement('div');
+            displayTask.className = 'show-task';
+
+            displayTask.innerHTML = `
+                <p>${task}</p>
+                <button class="task-done">done</button>
+                <button class="task-delete" disabled>delete</button>
+            `;
+
+            taskContainer.appendChild(displayTask);
+            taskInput.value = '';
+        }
+
+        taskContainer.addEventListener('click', (e) => {
+
+            if (e.target.classList.contains('task-done')) {
+                const taskRow = e.target.parentElement;
+                const taskText = taskRow.querySelector('p');
+                const deleteBtn = taskRow.querySelector('.task-delete');
+
+                const isDone = taskText.classList.toggle('done');
+                e.target.innerText = isDone ? 'undo' : 'done';
+                deleteBtn.disabled = !isDone;
+            }
+
+            if (e.target.classList.contains('task-delete')) {
+                e.target.parentElement.remove();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
