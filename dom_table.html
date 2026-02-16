@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>male data</h1>
+    <table>
+        <thead>
+            <th>firstname</th>
+            <th>lastname</th>
+            <th>age</th>
+            <th>gender</th>
+            <th>city</th>
+            <th>salary</th>
+        </thead>
+        <tbody id='male_data'>
+        </tbody>
+    </table>
+    <h1>female data </h1>
+    <table>
+        <thead>
+            <th>firstname</th>
+            <th>lastname</th>
+            <th>age</th>
+            <th>gender</th>
+            <th>city</th>
+            <th>salary</th>
+        </thead>
+        <tbody id='female_data'>
+        </tbody>
+    </table>
+
+    <script>
+        var people = [{
+            "firstname": "praveen",
+            "lastname": "gubbala",
+            "age": 36,
+            "gender": "male",
+            "city": "hyd",
+            "salary": 10000
+        },
+        {
+            "firstname": "srikanth",
+            "lastname": "gubbala",
+            "age": 32,
+            "gender": "male",
+            "city": "bengaluru",
+            "salary": 20000
+        },
+        {
+            "firstname": "pradeep",
+            "lastname": "reddy",
+            "age": 21,
+            "gender": "male",
+            "city": "hyd",
+            "salary": 30000
+        },
+        {
+            "firstname": "mounika",
+            "lastname": "mudiraj",
+            "age": 20,
+            "gender": "female",
+            "city": "nalgonda",
+            "salary": 30000
+        },
+        {
+            "firstname": "nikhil",
+            "lastname": "m",
+            "age": 22,
+            "gender": "male",
+            "city": "guntur",
+            "salary": 2000
+        },
+        {
+            "firstname": "riya",
+            "lastname": "bhadouria",
+            "age": 14,
+            "gender": "female",
+            "city": "indore",
+            "salary": 40000
+        }];
+
+        let boysdata = ''
+        let girlsdata = ''
+
+        people.forEach((el) => {
+            let tr = `<tr>
+            <td>${el.firstname}</td>
+            <td>${el.lastname}</td>
+            <td>${el.age}</td>
+            <td>${el.gender}</td>
+            <td>${el.city}</td>
+            <td>${el.salary}</td>
+            </tr>`
+
+            if (el.gender == 'male')
+                boysdata += tr
+            else
+                girlsdata += tr
+        })
+
+        document.getElementById('male_data').innerHTML = boysdata
+        document.getElementById('female_data').innerHTML = girlsdata
+
+        document.querySelectorAll('th').forEach((el) => {
+            el.addEventListener('click', (ev) => {
+                sort(ev.target.innerText)
+
+            })
+        })
+        function sort(sort_catogery) {
+            people.sort((a, b) => {
+                return a[sort_catogery].toLocaleLowerCase(b[sort_catogery].toLocaleLowerCase)
+            })
+        }
+
+
+    </script>
+
+</body>
+
+</html>

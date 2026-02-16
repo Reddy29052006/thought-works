@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+
+<body>
+
+    <h1>Todo List</h1>
+
+    <input type="text" id="todoInput" placeholder="Enter todo">
+    <button onclick="addTodo()">Add Todo</button>
+
+    <ul id="todoList"></ul>
+
+    <script>
+        // Store all todos in an array
+        let todos = ["Eat biriyani", "Pay electric bill"];
+
+        // Add a new todo
+        function addTodo() {
+            const input = document.getElementById("todoInput");
+            const value = input.value.trim();
+
+            if (value === "") return; // prevent empty todo
+
+            todos.push(value);
+            input.value = ""; // clear input
+            renderTodos();
+        }
+
+        // Display todos on the screen
+        function renderTodos() {
+            const list = document.getElementById("todoList");
+            list.innerHTML = ""; // clear old list
+
+            todos.forEach((todo, index) => {
+                const li = document.createElement("li");
+                li.textContent = todo;
+
+                const deleteBtn = document.createElement("button");
+                deleteBtn.textContent = "Delete";
+                deleteBtn.onclick = () => deleteTodo(index);
+
+                li.appendChild(deleteBtn);
+                list.appendChild(li);
+            });
+        }
+
+        // Delete a todo
+        function deleteTodo(index) {
+            todos.splice(index, 1);
+            renderTodos();
+        }
+
+        // Initial render
+        renderTodos();
+    </script>
+
+</body>
+
+</html>

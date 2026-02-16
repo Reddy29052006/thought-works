@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login System</title>
+</head>
+
+<body>
+    <script>
+        var loginDetails = { username: "reddy", password: "123456" };
+
+        var enteredUsername = prompt("Enter your username:");
+
+        if (enteredUsername === loginDetails.username) {
+            var enteredPassword = prompt("Enter your password:");
+
+            if (enteredPassword === loginDetails.password) {
+                console.log("Login Successful.");
+            } else {
+                console.log("Incorrect Password.");
+            }
+
+        } else {
+            console.log("User not found.");
+        }
+    </script>
+</body>
+
+</html>

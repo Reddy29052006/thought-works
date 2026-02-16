@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Discount</title>
+</head>
+
+<body>
+    <script>
+        var total_cost = +prompt("Enter your total cost of items:");
+
+        if (total_cost > 1000) {
+            var paid = total_cost - (total_cost * 0.10);
+            console.log("Your total bill to pay: " + paid);
+        } else {
+            if (total_cost > 500 && total_cost < 1000) {
+                var paid = total_cost - (total_cost * 0.05);
+                console.log("Your total bill to pay: " + paid);
+            } else {
+                var paid = total_cost;
+                console.log("Your total bill to pay: " + paid);
+            }
+        }
+    </script>
+</body>
+
+</html>

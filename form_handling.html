@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            display: none;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="studentForm">
+        <label>Full Name:</label><br>
+        <input type="text" id="fullName" required><br><br>
+
+        <label>Gender:</label><br>
+        <input type="radio" name="gender" value="Male" required> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <input type="radio" name="gender" value="Others"> Others
+        <br><br>
+
+        <label>Technologies:</label><br>
+        <input type="checkbox" value="JavaScript"> JavaScript
+        <input type="checkbox" value="React"> React
+        <input type="checkbox" value="Angular"> Angular
+        <input type="checkbox" value="NodeJS"> NodeJS
+        <br><br>
+
+        <label>Address:</label><br>
+        <textarea id="address"></textarea>
+        <br><br>
+
+        <button type="submit">Add Student</button>
+    </form>
+
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th data-key="name">Name</th>
+                <th data-key="address">Address</th>
+                <th data-key="gender">Gender</th>
+                <th data-key="technologies">Technologies</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+
+    <script>
+        let students = [];
+        let form = document.getElementById("studentForm");
+        let tableBody = document.getElementById("tableBody");
+        let table = document.getElementById("studentTable");
+
+        form.addEventListener("submit", handleFormSubmit);
+
+        document.querySelectorAll("th").forEach(header => {
+            header.addEventListener("click", () => sortStudents(header.dataset.key));
+        });
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            let selectedTech = [];
+            document.querySelectorAll('input[type="checkbox"]:checked')
+                .forEach(item => selectedTech.push(item.value));
+
+            let student = {
+                name: document.getElementById("fullName").value,
+                address: document.getElementById("address").value,
+                gender: document.querySelector('input[name="gender"]:checked').value,
+                technologies: selectedTech
+            };
+
+            students.push(student);
+            renderTable();
+            form.reset();
+        }
+
+        function renderTable() {
+            tableBody.innerHTML = "";
+
+            students.forEach(student => {
+                tableBody.innerHTML += `
+                <tr>
+                    <td>${student.name}</td>
+                    <td>${student.address}</td>
+                    <td>${student.gender}</td>
+                    <td>${student.technologies.join(", ")}</td>
+                </tr>
+            `;
+            });
+
+            table.style.display = "table";
+        }
+
+        function sortStudents(key) {
+            students.sort((a, b) => {
+                if (Array.isArray(a[key])) {
+                    return a[key].length - b[key].length;
+                }
+                return a[key].toLowerCase().localeCompare(b[key].toLowerCase());
+            });
+            renderTable();
+        }
+    </script>
+
+</body>
+
+</html>

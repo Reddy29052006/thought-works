@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image switcher</title>
+
+    <style>
+        div {
+            width: 300px;
+            height: 500px;
+            text-align: center;
+        }
+
+        button {
+            width: 80px;
+            margin: 10px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <img id="display_image" src="" alt="">
+        <br>
+        <button onclick="prev()" id="prev_btn">Prev</button>
+        <button onclick="next()" id="next_btn">Next</button>
+    </div>
+
+    <script>
+        const images = [
+            'https://imgs.search.brave.com/N7bJpMbDLTgfTpOG6wxu_PsA6dJ4lxjDKmEcbiEOxVQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zc2Jp/a2VzLmluL2Nkbi9z/aG9wL2ZpbGVzLzFz/dF9TbGlkZV82X2Nk/NDkzODNlLTBiYWMt/NGQ2NC04YjE2LWQx/ZWIwNTViMjZiYy5q/cGc_dj0xNzQwMzk1/MjkwJndpZHRoPTE0/NDU',
+            'https://imgs.search.brave.com/sz-pENQQEdoWLgKmKpraPx_FH5faR86Fgwya0QbTMc0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudHJhY3Rvcmp1/bmN0aW9uLmNvbS9E/dWFsX0V4aGF1c3Rf/OTZiZmQ0MWVjNS53/ZWJwP2Zvcm1hdD13/ZWJwJnF1YWxpdHk9/NDA',
+            'https://imgs.search.brave.com/VrSq29Z32U3eEUidhSUjXp0gI6rRvz_VAtxGKxjCbjg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWdk/LmFlcGxjZG4uY29t/LzM3MHgyMDgvbi9j/dy9lYy8xNDQ0NDEv/cm95YWxlbmZpZWxk/LWNvbnRpbmVudGFs/LWd0LXJpZ2h0LXNp/ZGUtdmlldzEuanBl/Zz9pc2lnPTAmcT04/MA',
+            'https://imgs.search.brave.com/ysZC6mQk3prfNI_3nJGqROKygfy7GJ6MSv0AzzIySqo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/Y2FyYW5kYmlrZS5j/b20vX25leHQvaW1h/Z2U_dXJsPWh0dHBz/Oi8vaW1hZ2VzLmNh/cmFuZGJpa2UuY29t/L2Jpa2UtaW1hZ2Vz/L2dhbGxlcnkvcm95/YWwtZW5maWVsZC9j/b250aW5lbnRhbC1n/dC02NTAvZXh0ZXJp/b3IvMjAyM19yb3lh/bF9lbmZpZWxkX2Nv/bnRpbmVudGFsX2d0/XzY1MF9yZWFyX2Fs/bG95X2V4aGF1c3Qu/anBnJnc9NjQwJnE9/OTA'
+        ];
+
+        let i = 0;
+        const img = document.getElementById("display_image");
+        const prevBtn = document.getElementById("prev_btn");
+        const nextBtn = document.getElementById("next_btn");
+
+        img.src = images[i];
+        prevBtn.style.display = "none";
+
+        function next() {
+            if (i < images.length - 1) {
+                i++;
+                img.src = images[i];
+            }
+
+            prevBtn.style.display = "inline-block";
+
+            if (i === images.length - 1) {
+                nextBtn.style.display = "none";
+            }
+        }
+
+        function prev() {
+            if (i > 0) {
+                i--;
+                img.src = images[i];
+            }
+
+            nextBtn.style.display = "inline-block";
+
+            if (i === 0) {
+                prevBtn.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

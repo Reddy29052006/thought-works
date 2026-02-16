@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let products = [
+            {
+                title: 'smart phone',
+                price: 87690,
+                discount: 10,
+                category: 'electronics'
+            },
+            {
+                title: 'headphones',
+                price: 1732,
+                discount: 7,
+                category: 'electronics'
+            },
+            {
+                title: 'keyboard',
+                price: 1600,
+                discount: 5,
+                category: 'gagerts'
+            },
+        ];
+
+        product_names = products.find((a) => a.title === 'keyboard')
+        console.log(product_names);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var people = [
+            {
+                "firstname": "praveen",
+                "lastname": "gubbala",
+                "age": 36,
+                "gender": "male",
+                "city": "hyd",
+                "salary": 10000
+            },
+            {
+                "firstname": "srikanth",
+                "lastname": "gubbala",
+                "age": 32,
+                "gender": "male",
+                "city": "bengaluru",
+                "salary": 20000
+            },
+            {
+                "firstname": "pradeep",
+                "lastname": "reddy",
+                "age": 21,
+                "gender": "male",
+                "city": "hyd",
+                "salary": 25000
+            },
+            {
+                "firstname": "mounika",
+                "lastname": "mudiraj",
+                "age": 20,
+                "gender": "female",
+                "city": "nalgonda",
+            },
+            {
+                "firstname": "nikhil",
+                "lastname": "m",
+                "age": 22,
+                "gender": "male",
+                "city": "guntur",
+                "salary": 2000
+            },
+            {
+                "firstname": "riya",
+                "lastname": "bhadouria",
+                "age": 14,
+                "gender": "female",
+                "city": "indore",
+                "salary": 40000
+            }
+        ];
+        var st = 'reddy'
+        console.log(st.C)
+
+        var { males, females } = people.reduce((acc, p) => {
+            acc[p.gender === 'male' ? 'males' : 'females'].push(p);
+            return acc;
+        }, { males: [], females: [] });
+        console.log(males)
+        // people.forEach(element => {
+        //     if (element.firstname[0] == 'p')
+        //         console.log((element.firstname).toUpperCase(), element.lastname.toUpperCase())
+        // });
+        // people.forEach((a) => {
+        //     if (a.age > 25 && a.gender == 'male')
+        //         console.log(a.firstname)
+        // })
+        // people.forEach((a) => {
+        //     if (a.salary > 25000) {
+        //         console.log(a.firstname, a.salary)
+        //         a.salary = 15 / 100 * (a.salary) + a.salary
+        //     }
+        // })
+        // console.log(people.find((a) => a.firstname == 'riya')?.salary)
+
+        // var totalSalary = people.reduce((sum, p) => sum + (p.salary || 0), 0);
+        // console.log(totalSalary);
+        // people.toSorted((a, b) => b.firstname.localeCompare(a.firstname)).map(a => console.log(a.age, a.firstname));
+        // [...new Set(people.map(p => p.city))].forEach((a) => console.log(a))
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+</head>
+
+<body>
+    <!-- State -->
+    <h1>
+        Counter: <span id="counterValue"></span>
+    </h1>
+
+    <!-- Actions -->
+    <button id="incrementBtn" onclick="updateCounter('increment')">
+        Increment
+    </button>
+
+    <button id="decrementBtn" onclick="updateCounter('decrement')">
+        Decrement
+    </button>
+
+    <script>
+        // State
+        let counter = 0;
+        const counterElement = document.getElementById('counterValue');
+
+        // Initial UI update
+        counterElement.innerText = counter;
+
+        // handles action
+        function updateCounter(action) {
+            if (action === 'increment') {
+                counter++;
+            } else if (action === 'decrement') {
+                counter--;
+            }
+
+            // UI update
+            counterElement.innerText = counter;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadratic Equation</title>
+</head>
+
+<body>
+    <script>
+        const coefficientA = +prompt("Enter value of a:");
+        const coefficientB = +prompt("Enter value of b:");
+        const coefficientC = +prompt("Enter value of c:");
+
+        const discriminant = coefficientB ** 2 - 4 * coefficientA * coefficientC;
+
+        if (discriminant > 0) {
+            console.log("Two distinct real roots.");
+        } else {
+            if (discriminant === 0) {
+                console.log("One real root.");
+            } else {
+                console.log("No real roots (complex).");
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        a = +prompt("enter the first side of the triangle :");
+        b = +prompt("enter the second side of the triangle");
+        c = +prompt("enter the three side of the triangle:");
+
+        if ((a + b > c) || (b + c > a) || (a + c > b)) {
+
+            if (a == b && b == c)
+                console.log("it is a Equilateral triangle");
+
+            else {
+
+                if (a != b && b != c && c != a)
+                    console.log("it is a Scalene trinagle");
+
+                else
+                    console.log("it is a Isosceles triangle")
+            }
+        }
+
+        else {
+            console.log("it is not a triangle ")
+        }
+
+    </script>
+</body>
+
+</html>

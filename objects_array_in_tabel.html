@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: 1px solid black;
+        padding: 8px;
+    }
+</style>
+
+
+
+<body>
+
+    <table id>
+        <thead>
+            <tr>
+                <th onclick="sort_actors('name')">Name</th>
+                <th onclick="sort_actors('firstMovie')">First Movie</th>
+                <th onclick="sort_actors('birthPlace')">Birth Place</th>
+            </tr>
+        </thead>
+        <tbody id="actors"> </tbody>
+
+    </table>
+
+    <script>
+
+        var actors = [
+            {
+                "name": "Anushka Shetty",
+                "firstMovie": "Super (2005)",
+                "birthPlace": "Mangaluru, Karnataka, India"
+            },
+            {
+                "name": "Kajal Aggarwal",
+                "firstMovie": "Lakshmi Kalyanam (2007)",
+                "birthPlace": "Mumbai, Maharashtra, India"
+            },
+            {
+                "name": "Samantha Ruth Prabhu",
+                "firstMovie": "Ye Maaya Chesave (2010)",
+                "birthPlace": "Chennai, Tamil Nadu, India"
+            },
+            {
+                "name": "Rashmika Mandanna",
+                "firstMovie": "Chalo (2018)",
+                "birthPlace": "Virajpet, Karnataka, India"
+            },
+            {
+                "name": "Pooja Hegde",
+                "firstMovie": "Oka Laila Kosam (2014)",
+                "birthPlace": "Mumbai, Maharashtra, India"
+            },
+            {
+                "name": "Tamannaah Bhatia",
+                "firstMovie": "Sri (2005)",
+                "birthPlace": "Mumbai, Maharashtra, India"
+            },
+            {
+                "name": "Shruti Haasan",
+                "firstMovie": "Anaganaga O Dheerudu (2011)",
+                "birthPlace": "Chennai, Tamil Nadu, India"
+            },
+            {
+                "name": "Rakul Preet Singh",
+                "firstMovie": "Venkatadri Express (2013)",
+                "birthPlace": "New Delhi, India"
+            },
+            {
+                "name": "Nivetha Thomas",
+                "firstMovie": "Gentleman (2016)",
+                "birthPlace": "Chennai, Tamil Nadu, India"
+            },
+            {
+                "name": "Anjali",
+                "firstMovie": "Photo (2006)",
+                "birthPlace": "Razole, Andhra Pradesh, India"
+            },
+            {
+                "name": "Keerthy Suresh",
+                "firstMovie": "I don’t know",
+                "birthPlace": "Thiruvananthapuram, Kerala, India"
+            },
+            {
+                "name": "Trisha Krishnan",
+                "firstMovie": "Varsham (2004)",
+                "birthPlace": "Chennai, Tamil Nadu, India"
+            },
+            {
+                "name": "Sai Pallavi",
+                "firstMovie": "I don’t know",
+                "birthPlace": "Coimbatore, Tamil Nadu, India"
+            },
+            {
+                "name": "Raashi Khanna",
+                "firstMovie": "Oohalu Gusagusalade (2014)",
+                "birthPlace": "New Delhi, India"
+            },
+            {
+                "name": "Nithya Menen",
+                "firstMovie": "Ala Modalaindi (2007)",
+                "birthPlace": "Bengaluru, Karnataka, India"
+            },
+            {
+                "name": "Kriti Shetty",
+                "firstMovie": "Uppena (2021)",
+                "birthPlace": "Mangaluru, Karnataka, India"
+            }
+        ]
+
+        create_table_for_actors(actors)
+
+        function create_table_for_actors(actors) {
+            document.getElementById('actors').innerHTML = ''
+            for (let i = 0; i < actors.length; i++) {
+                let tr = document.createElement("tr");
+
+                let name = document.createElement("td");
+                name.textContent = actors[i].name;
+
+                let firstMovie = document.createElement("td");
+                firstMovie.textContent = actors[i].firstMovie;
+
+                let birthPlace = document.createElement("td");
+                birthPlace.textContent = actors[i].birthPlace;
+
+                tr.appendChild(name);
+                tr.appendChild(firstMovie);
+                tr.appendChild(birthPlace);
+
+                document.getElementById("actors").appendChild(tr);
+            }
+        }
+
+        function sort_actors(key) {
+            actors.sort((a, b) => {
+                return a[key].localeCompare(b[key])
+
+            })
+            create_table_for_actors(actors)
+        }
+
+    </script>
+
+</body>
+
+</html>

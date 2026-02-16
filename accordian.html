@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 10px;
+            padding: 10px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            background-color: beige;
+        }
+
+        li h2 {
+            background-color: rgb(246, 246, 209);
+        }
+
+        li p {
+            background-color: aqua;
+            display: none;
+            animation: alternate;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="accordian"> </ul>
+    <script>
+        const quotes = [
+            {
+                quote: "The only way to do great work is to love what you do.",
+                explanation: "This quote by Steve Jobs emphasizes the importance of passion in achieving excellence in one's work."
+            },
+            {
+                quote: "Innovation distinguishes between a leader and a follower.",
+                explanation: "Another quote from Steve Jobs, highlighting the critical role of innovation in leadership and market differentiation."
+            },
+            {
+                quote: "Stay hungry, stay foolish.",
+                explanation: "A famous line from Steve Jobs' Stanford commencement speech, encouraging continuous learning and unconventional thinking."
+            },
+            {
+                quote: "Your time is limited, don't waste it living someone else's life.",
+                explanation: "This quote, also by Steve Jobs, advises individuals to pursue their own paths and not conform to others' expectations."
+            },
+            {
+                quote: "The future belongs to those who believe in the beauty of their dreams.",
+                explanation: "Eleanor Roosevelt's quote inspires hope and the pursuit of aspirations."
+            },
+            {
+                quote: "Strive not to be a success, but rather to be of value.",
+                explanation: "Albert Einstein's advice focuses on contributing meaningfully rather than just achieving personal success."
+            },
+            {
+                quote: "The only impossible journey is the one you never begin.",
+                explanation: "Tony Robbins encourages taking the first step towards any goal, no matter how daunting."
+            }
+        ];
+
+        quotes.forEach(element => {
+            //create html elments
+            let accordian_quote = document.createElement('h2')
+            let accordian_explanation = document.createElement('p')
+            let accordian_item = document.createElement('li')
+
+            // adding event to h1 element
+            accordian_quote.addEventListener('click', (ev) => {
+                let p_element = document = ''
+                if (ev.srcElement.nextElementSibling.style.display === '')
+                    ev.srcElement.nextElementSibling.style.display = 'block'
+                else
+                    ev.srcElement.nextElementSibling.style.display = ''
+            })
+
+            // adding innertext
+            accordian_explanation.innerText = element.explanation
+            accordian_quote.innerText = element.quote
+
+            // appending child to li
+            accordian_item.appendChild(accordian_quote)
+            accordian_item.appendChild(accordian_explanation)
+            document.getElementById('accordian').appendChild(accordian_item)
+
+        });
+
+
+
+    </script>
+</body>
+
+</html>

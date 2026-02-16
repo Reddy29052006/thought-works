@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        ul li {
+            list-style: none;
+            border: 2px solid black;
+            width: 350px;
+            margin: 10px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        li h1 {
+            margin: 7px;
+        }
+
+        li h3 {
+            margin: 7px;
+        }
+
+        li h5 {
+            margin: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul id="nlist">
+    </ul>
+    <script>
+        var heroies = [
+            {
+                "name": "Anushka Shetty",
+                "firstMovie": "Super (2005)",
+                "birthPlace": "Mangaluru, Karnataka, India"
+            },
+            {
+                "name": "Kajal Aggarwal",
+                "firstMovie": "Lakshmi Kalyanam (2007)",
+                "birthPlace": "Mumbai, Maharashtra, India"
+            },
+            {
+                "name": "Samantha Ruth Prabhu",
+                "firstMovie": "Ye Maaya Chesave (2010)",
+                "birthPlace": "Chennai, Tamil Nadu, India"
+            },
+            {
+                "name": "Rashmika Mandanna",
+                "firstMovie": "Chalo (2018)",
+                "birthPlace": "Virajpet, Karnataka, India"
+            },
+            {
+                "name": "Pooja Hegde",
+                "firstMovie": "Oka Laila Kosam (2014)",
+                "birthPlace": "Mumbai, Maharashtra, India"
+            },
+            {
+                "name": "Tamannaah Bhatia",
+                "firstMovie": "Sri (2005)",
+                "birthPlace": "Mumbai, Maharashtra, India"
+            },
+            {
+                "name": "Shruti Haasan",
+                "firstMovie": "Anaganaga O Dheerudu (2011)",
+                "birthPlace": "Chennai, Tamil Nadu, India"
+            },
+            {
+                "name": "Rakul Preet Singh",
+                "firstMovie": "Venkatadri Express (2013)",
+                "birthPlace": "New Delhi, India"
+            },
+            {
+                "name": "Nivetha Thomas",
+                "firstMovie": "Gentleman (2016)",
+                "birthPlace": "Chennai, Tamil Nadu, India"
+            },
+            {
+                "name": "Anjali",
+                "firstMovie": "Photo (2006)",
+                "birthPlace": "Razole, Andhra Pradesh, India"
+            },
+            {
+                "name": "Keerthy Suresh",
+                "firstMovie": "I don’t know",
+                "birthPlace": "Thiruvananthapuram, Kerala, India"
+            },
+            {
+                "name": "Trisha Krishnan",
+                "firstMovie": "Varsham (2004)",
+                "birthPlace": "Chennai, Tamil Nadu, India"
+            },
+            {
+                "name": "Sai Pallavi",
+                "firstMovie": "I don’t know",
+                "birthPlace": "Coimbatore, Tamil Nadu, India"
+            },
+            {
+                "name": "Raashi Khanna",
+                "firstMovie": "Oohalu Gusagusalade (2014)",
+                "birthPlace": "New Delhi, India"
+            },
+            {
+                "name": "Nithya Menen",
+                "firstMovie": "Ala Modalaindi (2007)",
+                "birthPlace": "Bengaluru, Karnataka, India"
+            },
+            {
+                "name": "Kriti Shetty",
+                "firstMovie": "Uppena (2021)",
+                "birthPlace": "Mangaluru, Karnataka, India"
+            }
+        ]
+
+        for (let i = 0; i <= heroies.length - 1; i++) {
+
+            let nlist = document.createElement("li")
+            let hname = document.createElement("h1")
+            hname.innerHTML = heroies[i].name
+            let hfm = document.createElement('h3')
+            hfm.innerHTML = heroies[i].firstMovie
+            let hpb = document.createElement('h5')
+            hpb.innerHTML = heroies[i].birthPlace
+
+            nlist.appendChild(hname)
+            nlist.appendChild(hfm)
+            nlist.appendChild(hpb)
+
+            document.getElementById('nlist').appendChild(nlist)
+
+        }
+    </script>
+
+
+</body>
+
+</html>

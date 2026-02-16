@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    .male {
+        color: blue;
+    }
+
+    .female {
+        color: pink;
+    }
+</style>
+</head>
+
+<body>
+    <!-- <ul>
+        <li>adx</li>
+        <li>mango </li>
+        <li>banana</li>
+    </ul>
+    <div id="a"></div> -->
+    <table id="d1" border="2px" width="300px">
+        <tr>
+            <th>name</th>
+            <th>place</th>
+            <th>gender</th>
+        </tr>
+    </table><br><br><br>
+    <table id="d2" border="2px" width="300px">
+        <tr>
+            <th>name</th>
+            <th>place</th>
+            <th>gender</th>
+        </tr>
+    </table><br><br><br>
+    <table id="d3" border="2px" width="300px">
+        <tr>
+            <th>name</th>
+            <th>place</th>
+            <th>gender</th>
+        </tr>
+    </table>
+    <script>
+        // const quotes = [
+        //     {
+        //         quote: "The only way to do great work is to love what you do.",
+        //         explanation: "This quote by Steve Jobs emphasizes the importance of passion in achieving excellence in one's work."
+        //     },
+        //     {
+        //         quote: "Innovation distinguishes between a leader and a follower.",
+        //         explanation: "Another quote from Steve Jobs, highlighting the critical role of innovation in leadership and market differentiation."
+        //     },
+        //     {
+        //         quote: "Stay hungry, stay foolish.",
+        //         explanation: "A famous line from Steve Jobs' Stanford commencement speech, encouraging continuous learning and unconventional thinking."
+        //     },
+        //     {
+        //         quote: "Your time is limited, don't waste it living someone else's life.",
+        //         explanation: "This quote, also by Steve Jobs, advises individuals to pursue their own paths and not conform to others' expectations."
+        //     },
+        //     {
+        //         quote: "The future belongs to those who believe in the beauty of their dreams.",
+        //         explanation: "Eleanor Roosevelt's quote inspires hope and the pursuit of aspirations."
+        //     },
+        //     {
+        //         quote: "Strive not to be a success, but rather to be of value.",
+        //         explanation: "Albert Einstein's advice focuses on contributing meaningfully rather than just achieving personal success."
+        //     },
+        //     {
+        //         quote: "The only impossible journey is the one you never begin.",
+        //         explanation: "Tony Robbins encourages taking the first step towards any goal, no matter how daunting."
+        //     }
+        // ];
+
+        // for(let i=0;i<quotes.length;i++){
+        //     var d=document.getElementById("a");
+        //     var data=document.createElement("div");
+        //      var qts=document.createElement("h1");
+        //      var exp=document.createElement("p");
+        //      qts.innerText=quotes[i].quote;
+        //      exp.innerText=quotes[i].explanation;
+        //   
+        // var ar=[];
+        // var x=document.getElementsByTagName("li");
+        //     for(var i=0;i<x.length;i++){
+        //         ar[i]=x[i].innerText;
+        //         console.log(ar[i]);
+        //     }
+
+        var students = [
+
+            {
+
+                name: 'jaya',
+
+                gender: 'female',
+
+                place: 'gachibowli',
+
+            },
+
+            {
+
+                name: 'dasu',
+
+                gender: 'male',
+
+                place: 'kphb'
+
+            },
+
+            {
+
+                name: 'swati',
+
+                gender: 'female',
+
+                place: 'pune'
+
+            },
+
+            {
+
+                name: 'pallavi',
+
+                gender: 'female',
+
+                place: 'assam'
+
+            },
+
+            {
+
+                name: 'kiran',
+
+                gender: 'male',
+
+                place: 'kondapur'
+
+            },
+
+            {
+
+                name: 'thirumala',
+
+                gender: 'male',
+
+                place: 'madhapur'
+
+            },
+
+            {
+
+                name: 'priya',
+
+                gender: 'female',
+
+                place: 'hitech'
+
+            },
+
+        ]
+        for (i = 0; i < students.length; i++) {
+            var table = document.getElementById("d1");
+            var table2 = document.getElementById("d2");
+            var table3 = document.getElementById("d3");
+            var trow = document.createElement("tr");
+            var sname = document.createElement("td");
+            var sgender = document.createElement("td");
+            var splace = document.createElement("td");
+            sname.innerText = students[i].name;
+            sgender.innerText = students[i].place;
+            splace.innerText = students[i].gender;
+            trow.appendChild(sname);
+            trow.appendChild(sgender);
+            trow.appendChild(splace);
+            console.log(table)
+            table.appendChild(trow);
+            console.log(table);
+            if (students[i].gender === "male") {
+                trow.style.backgroundColor = "blue";
+                table2.appendChild(trow);
+            }
+            else {
+                trow.style.backgroundColor = "pink";
+                table3.appendChild(trow);
+            }
+
+        }
+    </script>
+</body>
+
+</html>

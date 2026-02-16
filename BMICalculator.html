@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var height = +prompt("enter ur height :");
+        var weight = +prompt("enter ur weight ");
+        ibm = weight / (height ** 2)
+        if (ibm < 18.5)
+            console.log("ur are Underweight");
+        else {
+            if (ibm <= 24.9)
+                console.log("ur are normal");
+            else {
+                if (ibm <= 29.9)
+                    console.log("ur are overweight")
+                else
+                    console.log("ur are Obese")
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            transition: 0.2s ease-in-out;
+        }
+
+        body {
+            background-color: rgb(244, 246, 249);
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: rgb(51, 51, 51);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: rgb(44, 62, 80);
+            color: white;
+        }
+
+        thead th {
+            padding: 12px;
+            text-align: left;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        tbody td {
+            padding: 12px;
+            font-size: 14px;
+            color: rgb(51, 51, 51);
+            vertical-align: top;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: rgb(249, 251, 253);
+        }
+
+        tbody tr:hover {
+            background-color: rgb(238, 243, 248);
+        }
+
+        img {
+            width: 60px;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .longDescription {
+            max-height: 100px;
+            overflow-y: auto;
+        }
+
+        td,
+        th {
+            border-bottom: 1px solid rgb(224, 224, 224);
+        }
+
+        .seach-next {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        #search {
+            padding: 10px 15px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        #search:focus {
+            border-color: rgb(44, 62, 80);
+            box-shadow: 0 0 6px rgba(44, 62, 80, 0.2);
+        }
+
+        #next {
+            padding: 8px 16px;
+            border: none;
+            background-color: rgb(44, 62, 80);
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #next:hover {
+            background-color: rgb(33, 47, 60);
+        }
+
+        th i {
+            display: none;
+            margin-left: 5px;
+        }
+
+        th i.active {
+            display: inline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Books Data</h1>
+
+    <div class="seach-next">
+        <input type="text" id="search" placeholder="Search by title, ISBN...">
+        <button id="next">Next</button>
+    </div>
+
+    <table id="books-data">
+        <thead>
+            <tr>
+                <th data-sort="title" data-direction="ac">
+                    Title<i class="bi bi-arrow-up active"></i><i class="bi bi-arrow-down"></i>
+                </th>
+                <th data-sort="isbn" data-direction="ac">
+                    ISBN<i class="bi bi-arrow-up active"></i><i class="bi bi-arrow-down"></i>
+                </th>
+                <th data-sort="pageCount" data-direction="ac">
+                    Page Count<i class="bi bi-arrow-up active"></i><i class="bi bi-arrow-down"></i>
+                </th>
+                <th>Published Date</th>
+                <th>Image</th>
+                <th data-sort="shortDescription" data-direction="ac">
+                    Short Description<i class="bi bi-arrow-up active"></i><i class="bi bi-arrow-down"></i>
+                </th>
+                <th data-sort="longDescription" data-direction="ac">
+                    Long Description<i class="bi bi-arrow-up active"></i><i class="bi bi-arrow-down"></i>
+                </th>
+                <th data-sort="status" data-direction="ac">
+                    Status<i class="bi bi-arrow-up active"></i><i class="bi bi-arrow-down"></i>
+                </th>
+                <th>Authors</th>
+                <th>Categories</th>
+                <th data-sort="price" data-direction="ac">
+                    Price ($)<i class="bi bi-arrow-up active"></i><i class="bi bi-arrow-down"></i>
+                </th>
+                <th data-sort="discount" data-direction="ac">
+                    Discount (%)<i class="bi bi-arrow-up active"></i><i class="bi bi-arrow-down"></i>
+                </th>
+            </tr>
+        </thead>
+        <tbody id="books-table"></tbody>
+    </table>
+    <script>
+        //getting data
+        var data = []
+        var book_info = []
+        fetch('data.json')
+            .then(response => response.json())
+            .then(jsonData => {
+                data = jsonData
+                book_info = data
+                genTable()
+            })
+
+        // gen table
+        var books_data = document.getElementById('books-table')
+        function genTable() {
+            books_data.innerHTML = ''
+            let start = (current_page - 1) * 10
+            let end = start + 10
+            let page_data = book_info.slice(start, end)
+            page_data.forEach((book) => {
+                books_data.innerHTML += `
+            <tr>
+                <td>${book.title || 'no-data'}</td>
+                <td>${book.isbn || 'no-data'}</td>
+                <td>${book.pageCount || 'no-data'}</td>
+                <td>${book.publishedDate ? book.publishedDate.$date.split('T')[0] : 'no-data'}</td>
+                <td><img src="${book.thumbnailUrl || ''}"/></td>
+                <td> ${book.shortDescription
+                        ? book.shortDescription.substring(0, 120) + '...'
+                        : 'no-data'}
+                </td>
+                <td class="longDescription">
+                    ${book.longDescription
+                        ? book.longDescription.substring(0, 120) + '...'
+                        : 'no-data'}
+                </td>
+                <td>${book.status || 'no-data'}</td>
+                <td>${book.authors ? book.authors.join(', ') : 'no-data'}</td>
+                <td>${book.categories ? book.categories.join(', ') : 'no-data'}</td>
+                <td>${book.price || 'no-data'}</td>
+                <td>${book.discount || '0'}</td>
+            </tr>`
+            })
+        }
+
+        // Next Button
+        var Next_btn = document.getElementById('next')
+        var current_page = 1
+        Next_btn.addEventListener('click', () => {
+            if (current_page * 10 < book_info.length) {
+                current_page++
+            }
+            else {
+                current_page = 1
+            }
+            genTable()
+        })
+
+
+        // Search Function
+        var searchInput = document.getElementById('search')
+        searchInput.addEventListener('keyup', () => {
+            let searchValue = searchInput.value.toLowerCase().trim()
+
+            book_info = data.filter(book => {
+                let title = book.title ? book.title.toLowerCase() : ''
+                let isbn = book.isbn ? book.isbn.toString() : ''
+
+                return (
+                    title.includes(searchValue) ||
+                    isbn.includes(searchValue)
+                )
+            })
+
+            current_page = 1
+            genTable()
+        })
+
+
+        document.querySelectorAll("th[data-sort]").forEach(th => {
+            th.addEventListener("click", () => {
+                sort_headers(th.dataset.sort, th)
+            })
+        })
+
+        // sort function
+        function sort_headers(header, th) {
+
+            let upArrow = th.querySelector(".bi-arrow-up")
+            let downArrow = th.querySelector(".bi-arrow-down")
+
+            if (th.dataset.direction === "ac") {
+                th.dataset.direction = 'dc'
+                downArrow.classList.add("active")
+                upArrow.classList.remove('active')
+                book_info = [...data].sort((a, b) => {
+                    if (["pageCount", "price", "discount"].includes(header)) {
+                        return (a[header] ?? 0) - (b[header] ?? 0)
+                    }
+                    return a[header]?.toLowerCase().localeCompare(b[header]?.toLowerCase())
+                })
+            }
+            else {
+                th.dataset.direction = 'ac'
+                upArrow.classList.add("active")
+                downArrow.classList.remove('active')
+                book_info = book_info.sort((a, b) => {
+                    if (["pageCount", "price", "discount"].includes(header)) {
+                        return (b[header] ?? 0) - (a[header] ?? 0)
+                    }
+                    return b[header]?.toLowerCase().localeCompare(a[header]?.toLowerCase())
+                })
+            }
+            current_page = 1
+            genTable()
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+            margin: 5px;
+            text-align: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <th>bike_name</th>
+            <th>model</th>
+            <th>company</th>
+            <th>year_of_release</th>
+        </thead>
+        <tbody id="bikes_table">
+
+        </tbody>
+    </table>
+    <script>
+
+        var bikes = [
+            {
+                "bike_name": "R15",
+                "model": "R15 V4",
+                "company": "Yamaha",
+                "year_of_release": 2021
+            },
+            {
+                "bike_name": "CB Shine",
+                "model": "Shine 125",
+                "company": "Honda",
+                "year_of_release": 2006
+            },
+            {
+                "bike_name": "Classic 350",
+                "model": "Classic 350",
+                "company": "Royal Enfield",
+                "year_of_release": 2009
+            },
+            {
+                "bike_name": "Pulsar",
+                "model": "Pulsar 150",
+                "company": "Bajaj",
+                "year_of_release": 2001
+            },
+            {
+                "bike_name": "Duke",
+                "model": "Duke 200",
+                "company": "KTM",
+                "year_of_release": 2012
+            }
+        ]
+        var dom = ''
+        bikes.forEach((element) => {
+            dom +=
+                `<tr>
+                <td>${element.bike_name}</td>
+                <td>${element.model}</td>
+                <td>${element.company}</td>
+                <td>${element.year_of_release}</td>
+                </tr>`
+        })
+        document.querySelector('tbody').innerHTML = dom
+    </script>
+</body>
+
+</html>
